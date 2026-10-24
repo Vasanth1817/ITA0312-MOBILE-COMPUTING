@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura — Health & Self-Care App</title>
+  <meta name="description" content="Aura Health & Self-Care mobile application for daily wellness, meditation, health routines, and self-care blogs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mobile-wrapper">
+    <div class="mobile-frame">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time" id="statusTime">09:41</span>
+        <div class="notch"></div>
+        <div class="status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M1 10h2v2H1zm4-3h2v5H5zm4-3h2v8H9zm4-4h2v12h-2z"/></svg>
+          <svg width="15" height="12" viewBox="0 0 15 12" fill="currentColor"><path d="M7.5 2.5C9.8 2.5 12 3.5 13.5 5.2L15 3.6C13.1 1.5 10.4.3 7.5.3 4.6.3 1.9 1.5 0 3.6l1.5 1.6C3 3.5 5.2 2.5 7.5 2.5zm0 4.6c1.3 0 2.5.6 3.4 1.6L12.3 7C11.1 5.6 9.4 4.7 7.5 4.7c-1.9 0-3.6.9-4.8 2.3l1.4 1.7c.9-1 2.1-1.6 3.4-1.6zm0 4.5c.9 0 1.6-.7 1.6-1.6 0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6 0 .9.7 1.6 1.6 1.6z"/></svg>
+          <svg width="22" height="11" viewBox="0 0 22 11" fill="currentColor"><rect x="1" y="1" width="18" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2.5" y="2.5" width="13" height="6" rx="1"/><path d="M20 4v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <!-- App Viewport -->
+      <div class="app-content" id="appViewport">
+
+        <!-- ================= SCREEN 1: WELCOME SCREEN ================= -->
+        <section class="screen active" id="screenWelcome">
+          <div class="welcome-container">
+            <div class="welcome-hero-art">
+              <div class="orb orb-1"></div>
+              <div class="orb orb-2"></div>
+              <div class="welcome-icon-bubble">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  <path d="M12 5v12"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="welcome-copy">
+              <span class="badge-pill">Mind & Body Wellness</span>
+              <h1 class="welcome-title">Aura Self-Care</h1>
+              <p class="welcome-subtitle">Nurture your mental clarity, discover daily wellness rituals, and restore balance.</p>
+            </div>
+
+            <div class="welcome-actions">
+              <button class="btn btn-primary" id="btnGoToLogin">
+                <span>Login</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              </button>
+              <button class="btn btn-secondary" id="btnGoToRegister">
+                <span>Create Account (Register)</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Welcome Screen &rarr; Choose Login or Register</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 2: LOGIN SCREEN ================= -->
+        <section class="screen" id="screenLogin">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenWelcome" aria-label="Back to Welcome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Sign In</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Welcome back</h3>
+              <p>Log in to access your personalized wellness and routines.</p>
+            </div>
+
+            <form id="loginForm" class="auth-form" onsubmit="return false;">
+              <div class="input-group">
+                <label for="loginEmail">Email Address</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <input type="email" id="loginEmail" placeholder="sarah.miller@example.com" value="sarah.wellness@aura.com" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="loginPassword" placeholder="••••••••" value="mindful2026" required>
+                </div>
+              </div>
+
+              <div class="form-row-space">
+                <label class="remember-label">
+                  <input type="checkbox" checked> <span>Remember me</span>
+                </label>
+                <a href="#" class="inline-link" onclick="alert('Demo notice: Use your password or tap Login to proceed!')">Forgot?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnLoginSubmit">
+                <span>Login &rarr; Home Screen</span>
+              </button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Don't have an account? <a href="#" id="linkLoginToRegister">Register here</a></p>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>INPUT Email & Password &rarr; NAVIGATE TO Home Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 3: REGISTER SCREEN ================= -->
+        <section class="screen" id="screenRegister">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenWelcome" aria-label="Back to Welcome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Create Account</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Start your journey</h3>
+              <p>Register to unlock self-care routines, blogs, and meditation guides.</p>
+            </div>
+
+            <form id="registerForm" class="auth-form" onsubmit="return false;">
+              <div class="input-group">
+                <label for="regName">Full Name</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <input type="text" id="regName" placeholder="Sarah Miller" value="Sarah Miller" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regEmail">Email Address</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <input type="email" id="regEmail" placeholder="sarah@example.com" value="sarah@example.com" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regPassword">Password</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="regPassword" placeholder="Create strong password" value="wellnessPass123" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="remember-label">
+                  <input type="checkbox" checked required> <span>I agree to the Terms of Self-Care & Privacy</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnRegisterSubmit">
+                <span>Register &rarr; Home Screen</span>
+              </button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Already have an account? <a href="#" id="linkRegisterToLogin">Login</a></p>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>INPUT Name, Email, Password &rarr; NAVIGATE TO Home Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 4: HOME SCREEN ================= -->
+        <section class="screen" id="screenHome">
+          <div class="home-header">
+            <div class="user-profile-badge">
+              <div class="avatar">🌿</div>
+              <div>
+                <span class="greeting-subtitle">Good Morning,</span>
+                <h3 class="user-greeting" id="homeUserName">Sarah Miller</h3>
+              </div>
+            </div>
+            <button class="icon-action-btn" id="btnHomeLogout" title="Logout / Switch Account">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="home-scroll-area">
+            <!-- Daily Wellness Banner -->
+            <div class="wellness-card-banner">
+              <div class="wellness-banner-text">
+                <span class="banner-tag">Daily Mindset</span>
+                <h4>"Peace begins with a conscious breath."</h4>
+                <div class="streak-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2c.5 3.5 4 6 4 9a6 6 0 1 1-12 0c0-3 3.5-5.5 4-9z"/></svg>
+                  <span>Day 7 Streak • Mindful Bloom</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mood Check-in -->
+            <div class="section-block">
+              <div class="section-title-row">
+                <h4>Today's Vibe</h4>
+                <span class="muted-note">How are you feeling?</span>
+              </div>
+              <div class="mood-selector">
+                <button class="mood-btn active" data-mood="Calm"><span>😌</span><small>Calm</small></button>
+                <button class="mood-btn" data-mood="Happy"><span>✨</span><small>Joyful</small></button>
+                <button class="mood-btn" data-mood="Tired"><span>😴</span><small>Tired</small></button>
+                <button class="mood-btn" data-mood="Stressed"><span>🌧️</span><small>Anxious</small></button>
+              </div>
+            </div>
+
+            <!-- Navigation Sections specified in Pseudocode -->
+            <div class="section-block">
+              <div class="section-title-row">
+                <h4>Explore Sections</h4>
+                <span class="muted-note">Tap to navigate</span>
+              </div>
+
+              <div class="flow-nav-cards">
+                <!-- 1. Health Routine Blogs -->
+                <div class="flow-card flow-card-emerald" id="navToHealthBlogs">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Health Routine Blogs</h5>
+                    <p>Circadian rhythms, hydration rituals, daily vitality tips</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- 2. Self-Care Blogs -->
+                <div class="flow-card flow-card-rose" id="navToSelfCareBlogs">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Self-Care Blogs</h5>
+                    <p>Digital detox, evening winddowns, emotional boundary guides</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- 3. Meditation and Exercises -->
+                <div class="flow-card flow-card-violet" id="navToMeditation">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Meditation and Exercises</h5>
+                    <p>Guided breathwork timer, desk stretches, mindful zen audio</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Home Screen &rarr; Choose Blogs or Meditation</code>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Bar -->
+          <div class="bottom-tab-bar">
+            <button class="tab-item active" data-target="screenHome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span>Home</span>
+            </button>
+            <button class="tab-item" data-target="screenHealthBlogs">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>Health</span>
+            </button>
+            <button class="tab-item" data-target="screenSelfCareBlogs">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <span>Self-Care</span>
+            </button>
+            <button class="tab-item" data-target="screenMeditation">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+              <span>Zen</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 5: HEALTH ROUTINE BLOGS SCREEN ================= -->
+        <section class="screen" id="screenHealthBlogs">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Health Routine Blogs</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="category-chips">
+              <button class="chip active">All Routines</button>
+              <button class="chip">Morning</button>
+              <button class="chip">Hydration</button>
+              <button class="chip">Sleep</button>
+            </div>
+
+            <div class="blog-list" id="healthBlogList">
+              <!-- Article 1 -->
+              <article class="blog-card" onclick="openBlogModal('Circadian Rhythm Optimization', 'Health Routine', 'Dr. Marcus Vance', 'Learn how aligning your wake-up time with morning sunlight balances cortisol and improves natural melatonin production at night. Start with 10 minutes of direct outdoor light within 30 minutes of waking.')">
+                <div class="blog-card-media" style="background: linear-gradient(135deg, #059669, #10b981);">
+                  <span class="blog-tag">Routine 01</span>
+                  <span class="read-time">4 min read</span>
+                </div>
+                <div class="blog-card-content">
+                  <h4>Circadian Rhythm Mastery for Daily Energy</h4>
+                  <p>How morning sunlight alignment calibrates your internal clock and boosts energy.</p>
+                  <div class="blog-author-row">
+                    <span>By Dr. Marcus Vance</span>
+                    <span class="read-more-link">Read Article &rarr;</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article 2 -->
+              <article class="blog-card" onclick="openBlogModal('The 8-Glass Hydration Architecture', 'Health Routine', 'Elena Rostova, RDN', 'Optimal hydration requires electrolytes and structured timing. Drinking a glass of warm mineral water with a pinch of pink salt upon waking restores cellular osmotic balance after overnight respiration.')">
+                <div class="blog-card-media" style="background: linear-gradient(135deg, #0284c7, #38bdf8);">
+                  <span class="blog-tag">Routine 02</span>
+                  <span class="read-time">3 min read</span>
+                </div>
+                <div class="blog-card-content">
+                  <h4>The 8-Glass Hydration Architecture</h4>
+                  <p>Why cellular hydration is about mineral timing rather than just chugging water.</p>
+                  <div class="blog-author-row">
+                    <span>By Elena Rostova, RDN</span>
+                    <span class="read-more-link">Read Article &rarr;</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article 3 -->
+              <article class="blog-card" onclick="openBlogModal('Micro-Movement Breaks for Desk Workers', 'Health Routine', 'Coach Leo Tan', 'Sitting stagnant compresses spinal discs and reduces blood flow. Performing a 2-minute spinal twist and hip-flexor stretch every 50 minutes increases brain oxygenation and prevents lumbar strain.')">
+                <div class="blog-card-media" style="background: linear-gradient(135deg, #4f46e5, #818cf8);">
+                  <span class="blog-tag">Routine 03</span>
+                  <span class="read-time">5 min read</span>
+                </div>
+                <div class="blog-card-content">
+                  <h4>Micro-Movement Breaks for Desk Workers</h4>
+                  <p>Prevent spinal compression and brain fog with 2-minute hourly reset habits.</p>
+                  <div class="blog-author-row">
+                    <span>By Coach Leo Tan</span>
+                    <span class="read-more-link">Read Article &rarr;</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Health Routine Blogs Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 6: SELF-CARE BLOGS SCREEN ================= -->
+        <section class="screen" id="screenSelfCareBlogs">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Self-Care Blogs</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="category-chips">
+              <button class="chip active">Mindset</button>
+              <button class="chip">Detox</button>
+              <button class="chip">Boundaries</button>
+              <button class="chip">Journaling</button>
+            </div>
+
+            <div class="blog-list" id="selfCareBlogList">
+              <!-- Article 1 -->
+              <article class="blog-card" onclick="openBlogModal('The Digital Sunset: Reclaiming Your Evenings', 'Self-Care Ritual', 'Clara Dubois', 'Blue light suppresses natural melatonin, but notifications fuel cognitive hyper-vigilance. Establishing a hard phone curfew at 9:00 PM creates psychological space to decompress.')">
+                <div class="blog-card-media" style="background: linear-gradient(135deg, #e11d48, #fb7185);">
+                  <span class="blog-tag">Self-Care 01</span>
+                  <span class="read-time">6 min read</span>
+                </div>
+                <div class="blog-card-content">
+                  <h4>The Digital Sunset: Reclaiming Evenings</h4>
+                  <p>Step-by-step framework to disconnect from screen overload before bedtime.</p>
+                  <div class="blog-author-row">
+                    <span>By Clara Dubois</span>
+                    <span class="read-more-link">Read Article &rarr;</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article 2 -->
+              <article class="blog-card" onclick="openBlogModal('Setting Kind & Unapologetic Boundaries', 'Self-Care Ritual', 'Amara Okafor, PsyD', 'Saying yes to everything is saying no to your peace. Learn diplomatic phrases that honor your time and protect your emotional reserves without guilt.')">
+                <div class="blog-card-media" style="background: linear-gradient(135deg, #d97706, #fbbf24);">
+                  <span class="blog-tag">Self-Care 02</span>
+                  <span class="read-time">5 min read</span>
+                </div>
+                <div class="blog-card-content">
+                  <h4>Setting Kind & Unapologetic Boundaries</h4>
+                  <p>How to protect your mental energy from conversational drain and overtime.</p>
+                  <div class="blog-author-row">
+                    <span>By Amara Okafor, PsyD</span>
+                    <span class="read-more-link">Read Article &rarr;</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article 3 -->
+              <article class="blog-card" onclick="openBlogModal('Brain-Dump Journaling for Anxiety', 'Self-Care Ritual', 'Sarah Chen', 'When thoughts race in circles, transferring them to paper halts mental rumination. Spend 5 minutes every night writing uncensored thoughts to empty cognitive clutter.')">
+                <div class="blog-card-media" style="background: linear-gradient(135deg, #9333ea, #c084fc);">
+                  <span class="blog-tag">Self-Care 03</span>
+                  <span class="read-time">4 min read</span>
+                </div>
+                <div class="blog-card-content">
+                  <h4>Brain-Dump Journaling for Anxiety Relief</h4>
+                  <p>The 5-minute night paper purge to calm overthinking and invite deep sleep.</p>
+                  <div class="blog-author-row">
+                    <span>By Sarah Chen</span>
+                    <span class="read-more-link">Read Article &rarr;</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Self-Care Blogs Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 7: MEDITATION AND EXERCISES SCREEN ================= -->
+        <section class="screen" id="screenMeditation">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Meditation & Exercises</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <!-- Breathing Visualizer Card -->
+            <div class="zen-visualizer-box">
+              <span class="badge-pill">Interactive 4-4-4 Breathwork</span>
+              <div class="breathing-circle-outer">
+                <div class="breathing-circle-inner" id="breathCircle">
+                  <span id="breathPhaseText">Inhale</span>
+                </div>
+              </div>
+              <div class="breath-timer-display" id="breathTimerDisplay">00:04</div>
+              <div class="breath-controls">
+                <button class="btn btn-primary" id="btnToggleBreathing">
+                  <span id="breathBtnLabel">Start Breathing Session</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Guided Exercise Routines -->
+            <div class="exercise-section">
+              <h4>Mind-Body Quick Routines</h4>
+              
+              <div class="routine-item" onclick="startExerciseRoutine('5-Min Desk Unwind', 'Gentle neck, shoulder, and thoracic rotations designed to relieve tension from laptop posture.')">
+                <div class="routine-icon" style="background: #e0f2fe; color: #0284c7;">🧘‍♂️</div>
+                <div class="routine-info">
+                  <h5>5-Min Desk Unwind</h5>
+                  <p>Gentle spinal stretches & shoulder rolls</p>
+                </div>
+                <span class="duration-badge">5 min</span>
+              </div>
+
+              <div class="routine-item" onclick="startExerciseRoutine('Core & Posture Reset', 'Active core engagement and bird-dog alignment to strengthen spinal posture.')">
+                <div class="routine-icon" style="background: #fef3c7; color: #d97706;">⚡</div>
+                <div class="routine-info">
+                  <h5>Core & Posture Reset</h5>
+                  <p>Bird-dog and pelvic stabilization flow</p>
+                </div>
+                <span class="duration-badge">8 min</span>
+              </div>
+
+              <div class="routine-item" onclick="startExerciseRoutine('Sound Bath & Deep Relaxation', 'Calming 432Hz ambient binaural soundscape for releasing nervous system stress.')">
+                <div class="routine-icon" style="background: #ede9fe; color: #7c3aed;">🔔</div>
+                <div class="routine-info">
+                  <h5>Sound Bath & Deep Zen</h5>
+                  <p>432Hz soundscape & guided body scan</p>
+                </div>
+                <span class="duration-badge">12 min</span>
+              </div>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Meditation and Exercises Screen</code>
+            </div>
+          </div>
+        </section>
+
+      </div> <!-- /app-content -->
+
+      <!-- Interactive Blog Reader Modal -->
+      <div class="modal-overlay" id="blogModal">
+        <div class="modal-sheet">
+          <div class="modal-handle"></div>
+          <div class="modal-header">
+            <span class="badge-pill" id="modalCategory">Category</span>
+            <button class="close-modal-btn" id="btnCloseBlogModal">&times;</button>
+          </div>
+          <h3 id="modalTitle">Article Title</h3>
+          <p class="modal-author" id="modalAuthor">Author info</p>
+          <div class="modal-body" id="modalContent">
+            Article body text...
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary" id="btnBookmarkArticle">
+              <span>Bookmark Routine</span>
+            </button>
+            <button class="btn btn-primary" id="btnFinishArticle">
+              <span>Done Reading</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Notification -->
+      <div class="toast-notice" id="appToast">Notification message</div>
+    </div> <!-- /mobile-frame -->
+  </div> <!-- /mobile-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>
