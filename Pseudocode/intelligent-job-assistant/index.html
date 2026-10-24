@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobPulse AI — Intelligent Job Assistant</title>
+  <meta name="description" content="AI-powered Job Assistant mobile app prototype for resume analysis, skill profiles, subscription tiers, and job selection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mobile-wrapper">
+    <div class="mobile-frame">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time" id="statusTime">09:41</span>
+        <div class="notch"></div>
+        <div class="status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M1 10h2v2H1zm4-3h2v5H5zm4-3h2v8H9zm4-4h2v12h-2z"/></svg>
+          <svg width="15" height="12" viewBox="0 0 15 12" fill="currentColor"><path d="M7.5 2.5C9.8 2.5 12 3.5 13.5 5.2L15 3.6C13.1 1.5 10.4.3 7.5.3 4.6.3 1.9 1.5 0 3.6l1.5 1.6C3 3.5 5.2 2.5 7.5 2.5zm0 4.6c1.3 0 2.5.6 3.4 1.6L12.3 7C11.1 5.6 9.4 4.7 7.5 4.7c-1.9 0-3.6.9-4.8 2.3l1.4 1.7c.9-1 2.1-1.6 3.4-1.6zm0 4.5c.9 0 1.6-.7 1.6-1.6 0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6 0 .9.7 1.6 1.6 1.6z"/></svg>
+          <svg width="22" height="11" viewBox="0 0 22 11" fill="currentColor"><rect x="1" y="1" width="18" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2.5" y="2.5" width="13" height="6" rx="1"/><path d="M20 4v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <!-- App Viewport -->
+      <div class="app-content" id="appViewport">
+
+        <!-- ================= SCREEN 1: WELCOME SCREEN ================= -->
+        <section class="screen active" id="screenWelcome">
+          <div class="welcome-container">
+            <div class="welcome-hero-art">
+              <div class="glowing-mesh"></div>
+              <div class="ai-badge-chip">
+                <span class="sparkle-icon">✨</span>
+                <span>Powered by NextGen AI</span>
+              </div>
+              <div class="ai-brain-card">
+                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                  <circle cx="12" cy="12" r="4"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="welcome-copy">
+              <h1 class="welcome-title">JobPulse AI</h1>
+              <p class="welcome-tagline">Intelligent Career & Job Assistant</p>
+              <p class="welcome-subtitle">Accelerate your hiring journey with smart resume ATS parsing, personalized matchmaking, and instant recruiter outreach.</p>
+            </div>
+
+            <div class="welcome-actions">
+              <button class="btn btn-primary" id="btnGoToLogin">
+                <span>Login to Account</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              </button>
+              <button class="btn btn-secondary" id="btnGoToRegister">
+                <span>Register (Create Account)</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Welcome Screen &rarr; Choose Login or Register</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 2: LOGIN SCREEN ================= -->
+        <section class="screen" id="screenLogin">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenWelcome" aria-label="Back to Welcome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Job Assistant Login</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Sign in to JobPulse</h3>
+              <p>Access your AI application pipeline and saved job matches.</p>
+            </div>
+
+            <form id="loginForm" class="auth-form" onsubmit="return false;">
+              <div class="input-group">
+                <label for="loginEmail">Email Address</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <input type="email" id="loginEmail" placeholder="candidate@example.com" value="alex.dev@jobpulse.ai" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="loginPassword" placeholder="••••••••" value="jobHunter2026" required>
+                </div>
+              </div>
+
+              <div class="form-row-space">
+                <label class="remember-label">
+                  <input type="checkbox" checked> <span>Stay logged in</span>
+                </label>
+                <a href="#" class="inline-link" onclick="alert('Demo: Click Login to proceed to Home screen')">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnLoginSubmit">
+                <span>Login &rarr; Home Screen</span>
+              </button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Need an account? <a href="#" id="linkLoginToRegister">Register here</a></p>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>IF user selects "Login" &rarr; DISPLAY Login Screen &rarr; Home</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 3: REGISTER SCREEN ================= -->
+        <section class="screen" id="screenRegister">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenWelcome" aria-label="Back to Welcome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Create Candidate Profile</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Start Job Assistant</h3>
+              <p>Create your profile for automated matches and resume checks.</p>
+            </div>
+
+            <form id="registerForm" class="auth-form" onsubmit="return false;">
+              <div class="input-group">
+                <label for="regFullName">Full Name</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <input type="text" id="regFullName" placeholder="Alex Chen" value="Alex Chen" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regEmail">Work Email</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <input type="email" id="regEmail" placeholder="alex@domain.com" value="alex.chen@domain.com" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regPassword">Password</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="regPassword" placeholder="Minimum 8 characters" value="passCareer2026" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnRegisterSubmit">
+                <span>Register &rarr; Home Screen</span>
+              </button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Already registered? <a href="#" id="linkRegisterToLogin">Login</a></p>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>ELSE IF user selects "Register" &rarr; DISPLAY Registration Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 4: HOME SCREEN ================= -->
+        <section class="screen" id="screenHome">
+          <div class="home-header">
+            <div class="user-profile-badge">
+              <div class="avatar-tech">💼</div>
+              <div>
+                <span class="greeting-subtitle">Job Seeker Hub</span>
+                <h3 class="user-greeting" id="homeCandidateName">Alex Chen</h3>
+              </div>
+            </div>
+            <button class="icon-action-btn" id="btnHomeLogout" title="Logout">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="home-scroll-area">
+            <!-- AI Career Radar Banner -->
+            <div class="ai-stat-banner">
+              <div class="banner-top-badge">
+                <span class="pulse-dot"></span>
+                <span>AI Profile Match 94%</span>
+              </div>
+              <h4>18 New High-Match Jobs Available</h4>
+              <p>Based on your skills: React, TypeScript, Node.js, and Cloud Architecture.</p>
+              <div class="stat-row">
+                <div class="mini-stat">
+                  <strong>4</strong>
+                  <span>Interviews</span>
+                </div>
+                <div class="mini-stat">
+                  <strong>12</strong>
+                  <span>Applied</span>
+                </div>
+                <div class="mini-stat">
+                  <strong>92</strong>
+                  <span>ATS Score</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- The 4 Core Navigation Modules specified in Pseudocode -->
+            <div class="section-block">
+              <div class="section-title-row">
+                <h4>Assistant Navigation Flow</h4>
+                <span class="muted-note">Choose an option</span>
+              </div>
+
+              <div class="flow-nav-cards">
+                <!-- Option 1: Subscription -->
+                <div class="flow-card flow-card-gold" id="navToSubscription">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Subscription</h5>
+                    <p>Unlock AI auto-apply, salary unlock, & interview coach</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- Option 2: Personal Details -->
+                <div class="flow-card flow-card-blue" id="navToPersonalDetails">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Personal Details</h5>
+                    <p>Input Name, Qualification, and Skill competencies</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- Option 3: Upload Resume -->
+                <div class="flow-card flow-card-emerald" id="navToResumeUpload">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Upload Resume</h5>
+                    <p>Submit CV for real-time ATS optimization & keyword score</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- Option 4: Choose Job -->
+                <div class="flow-card flow-card-indigo" id="navToChooseJob">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Choose Job</h5>
+                    <p>Browse curated available openings & apply in 1-click</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Home Screen &rarr; Choose: Subscription | Personal Details | Upload Resume | Choose Job</code>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Bar -->
+          <div class="bottom-tab-bar">
+            <button class="tab-item active" data-target="screenHome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span>Home</span>
+            </button>
+            <button class="tab-item" data-target="screenPersonalDetails">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Profile</span>
+            </button>
+            <button class="tab-item" data-target="screenResumeUpload">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>Resume</span>
+            </button>
+            <button class="tab-item" data-target="screenChooseJob">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <span>Jobs</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 5: SUBSCRIPTION PLANS SCREEN ================= -->
+        <section class="screen" id="screenSubscription">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Subscription Plans</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="sub-hero">
+              <span class="badge-pill">Power Up Your Career</span>
+              <h3>Choose Your AI Tier</h3>
+              <p>Accelerate your hiring cycle by 3.8x with AI automation.</p>
+            </div>
+
+            <!-- Free Plan -->
+            <div class="pricing-card">
+              <div class="pricing-badge">Basic</div>
+              <div class="pricing-header">
+                <h4>Starter Candidate</h4>
+                <div class="price-value">$0 <small>/ month</small></div>
+              </div>
+              <ul class="plan-features">
+                <li><span class="check-tick">✓</span> 5 Job Applications / week</li>
+                <li><span class="check-tick">✓</span> Basic ATS Resume Scan</li>
+                <li><span class="cross-tick">✕</span> Auto-Apply Bot disabled</li>
+              </ul>
+              <button class="btn btn-secondary btn-block" onclick="activateSubscription('Starter Candidate (Free)')">Current Plan</button>
+            </div>
+
+            <!-- Pro Plan (Featured) -->
+            <div class="pricing-card featured">
+              <div class="pricing-badge gold">MOST POPULAR</div>
+              <div class="pricing-header">
+                <h4>Pro Career Booster</h4>
+                <div class="price-value">$19.99 <small>/ month</small></div>
+              </div>
+              <ul class="plan-features">
+                <li><span class="check-tick">✓</span> Unlimited AI Applications</li>
+                <li><span class="check-tick">✓</span> 99% ATS Resume Optimization</li>
+                <li><span class="check-tick">✓</span> AI Interview Mock Voice Coach</li>
+                <li><span class="check-tick">✓</span> Direct Recruiter InMail Delivery</li>
+              </ul>
+              <button class="btn btn-primary btn-block" onclick="activateSubscription('Pro Career Booster ($19.99/mo)')">
+                <span>Activate Pro Membership</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Subscription Plans Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 6: PERSONAL DETAILS SCREEN ================= -->
+        <section class="screen" id="screenPersonalDetails">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Personal Details</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Candidate Qualifications</h3>
+              <p>Configure Name, Qualification, and Skills for AI job matchmaking.</p>
+            </div>
+
+            <form id="detailsForm" class="auth-form" onsubmit="return false;">
+              <!-- INPUT Name -->
+              <div class="input-group">
+                <label for="profileFullName">Full Legal Name</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <input type="text" id="profileFullName" value="Alex Chen" required>
+                </div>
+              </div>
+
+              <!-- INPUT Qualification -->
+              <div class="input-group">
+                <label for="profileQualification">Highest Qualification</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  <input type="text" id="profileQualification" value="B.Tech in Computer Science & Engineering" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="profileUniversity">University / Institution</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg>
+                  <input type="text" id="profileUniversity" value="National Institute of Technology" required>
+                </div>
+              </div>
+
+              <!-- INPUT Skills -->
+              <div class="input-group">
+                <label>Technical & Professional Skills</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <input type="text" id="skillInputField" placeholder="Type a skill and press Enter...">
+                </div>
+                <div class="skills-chips-wrapper" id="skillsTagContainer">
+                  <!-- Skill chips dynamically rendered -->
+                  <span class="skill-tag">React <span class="remove-skill" onclick="removeSkill(this)">&times;</span></span>
+                  <span class="skill-tag">TypeScript <span class="remove-skill" onclick="removeSkill(this)">&times;</span></span>
+                  <span class="skill-tag">Node.js <span class="remove-skill" onclick="removeSkill(this)">&times;</span></span>
+                  <span class="skill-tag">Docker <span class="remove-skill" onclick="removeSkill(this)">&times;</span></span>
+                  <span class="skill-tag">AWS Cloud <span class="remove-skill" onclick="removeSkill(this)">&times;</span></span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnSaveDetails">
+                <span>Save Personal Details &rarr; Home</span>
+              </button>
+            </form>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Personal Details Screen &rarr; INPUT Name, Qualification and Skills</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 7: RESUME UPLOAD SCREEN ================= -->
+        <section class="screen" id="screenResumeUpload">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Upload Resume</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="upload-dropzone" id="resumeDropzone">
+              <div class="upload-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <h4>Upload your Resume (PDF / DOCX)</h4>
+              <p>Drag and drop your file here or tap to select</p>
+              <input type="file" id="resumeFileInput" accept=".pdf,.doc,.docx" style="display: none;">
+              <button type="button" class="btn btn-secondary" onclick="document.getElementById('resumeFileInput').click()">Browse Files</button>
+            </div>
+
+            <!-- Pre-filler quick test -->
+            <button class="btn btn-secondary btn-block" id="btnPrefillSampleResume">
+              <span>⚡ Load Sample Resume (Alex_Chen_CV.pdf)</span>
+            </button>
+
+            <!-- ATS Analysis Card (Dynamic) -->
+            <div class="ats-report-card" id="atsReportCard">
+              <div class="ats-score-row">
+                <div>
+                  <span class="badge-pill">ATS Compatibility</span>
+                  <h4 id="uploadedResumeFileName">Alex_Chen_Senior_Dev.pdf</h4>
+                  <small id="uploadedResumeDate">Analyzed just now • 284 KB</small>
+                </div>
+                <div class="score-circle">
+                  <span>92%</span>
+                  <small>Score</small>
+                </div>
+              </div>
+
+              <div class="analysis-checks">
+                <div class="check-item ok">
+                  <span>✓</span> Strong Action Verbs Identified (87%)
+                </div>
+                <div class="check-item ok">
+                  <span>✓</span> High Match for Full Stack Roles
+                </div>
+                <div class="check-item warn">
+                  <span>!</span> Suggest adding Cloud Certification link
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="btnResumeDone">
+                <span>Save & Continue to Job Matching</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Resume Upload Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 8: CHOOSE JOB SCREEN ================= -->
+        <section class="screen" id="screenChooseJob">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Job Selection</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <!-- Search & Filters -->
+            <div class="input-wrapper search-bar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="jobSearchInput" placeholder="Search title, tech stack, company...">
+            </div>
+
+            <div class="category-chips">
+              <button class="chip active" data-filter="all">All Jobs</button>
+              <button class="chip" data-filter="remote">Remote</button>
+              <button class="chip" data-filter="frontend">Frontend</button>
+              <button class="chip" data-filter="fullstack">Full Stack</button>
+              <button class="chip" data-filter="ai">AI / ML</button>
+            </div>
+
+            <!-- DISPLAY Available Jobs -->
+            <div class="jobs-list" id="jobsListContainer">
+              <!-- Job 1 -->
+              <div class="job-card" onclick="openJobDetailModal('Senior Frontend Engineer', 'CloudScale Inc.', 'San Francisco, CA (Remote)', '$135,000 - $160,000', '96% AI Match', 'Seeking an experienced React & TypeScript engineer to lead high-performance client dashboards and micro-frontend architecture.')">
+                <div class="job-card-header">
+                  <div class="company-logo" style="background: #e0f2fe; color: #0284c7;">☁️</div>
+                  <div class="job-header-info">
+                    <h4>Senior Frontend Engineer</h4>
+                    <span class="company-name">CloudScale Inc. • Remote</span>
+                  </div>
+                  <span class="match-score-pill">96% Match</span>
+                </div>
+                <div class="job-card-meta">
+                  <span class="meta-tag">$135k - $160k</span>
+                  <span class="meta-tag">Full-time</span>
+                  <span class="meta-tag">React / Next.js</span>
+                </div>
+              </div>
+
+              <!-- Job 2 -->
+              <div class="job-card" onclick="openJobDetailModal('Full Stack AI Platform Engineer', 'NexusAI Labs', 'New York, NY (Hybrid)', '$145,000 - $175,000', '93% AI Match', 'Develop autonomous agent workflows and scalable Python/Node backends powering generative AI applications.')">
+                <div class="job-card-header">
+                  <div class="company-logo" style="background: #ede9fe; color: #7c3aed;">⚡</div>
+                  <div class="job-header-info">
+                    <h4>Full Stack AI Platform Eng</h4>
+                    <span class="company-name">NexusAI Labs • New York</span>
+                  </div>
+                  <span class="match-score-pill">93% Match</span>
+                </div>
+                <div class="job-card-meta">
+                  <span class="meta-tag">$145k - $175k</span>
+                  <span class="meta-tag">Hybrid</span>
+                  <span class="meta-tag">Python / TypeScript</span>
+                </div>
+              </div>
+
+              <!-- Job 3 -->
+              <div class="job-card" onclick="openJobDetailModal('UI/UX Product Systems Designer', 'Aura Design Co.', 'London, UK (Remote)', '£85,000 - £105,000', '89% AI Match', 'Create high-converting design systems, mobile UI prototypes in Figma, and micro-interaction specifications.')">
+                <div class="job-card-header">
+                  <div class="company-logo" style="background: #fce7f3; color: #db2777;">🎨</div>
+                  <div class="job-header-info">
+                    <h4>UI/UX Systems Designer</h4>
+                    <span class="company-name">Aura Design Co. • Remote</span>
+                  </div>
+                  <span class="match-score-pill">89% Match</span>
+                </div>
+                <div class="job-card-meta">
+                  <span class="meta-tag">£85k - £105k</span>
+                  <span class="meta-tag">Contract</span>
+                  <span class="meta-tag">Figma / CSS</span>
+                </div>
+              </div>
+
+              <!-- Job 4 -->
+              <div class="job-card" onclick="openJobDetailModal('Cloud Infrastructure Engineer', 'Apex Datacenter', 'Austin, TX', '$140,000 - $165,000', '91% AI Match', 'Design fault-tolerant Kubernetes orchestration, AWS Terraform modules, and CI/CD pipelines.')">
+                <div class="job-card-header">
+                  <div class="company-logo" style="background: #fef3c7; color: #d97706;">🛡️</div>
+                  <div class="job-header-info">
+                    <h4>Cloud DevOps Engineer</h4>
+                    <span class="company-name">Apex Datacenter • Austin</span>
+                  </div>
+                  <span class="match-score-pill">91% Match</span>
+                </div>
+                <div class="job-card-meta">
+                  <span class="meta-tag">$140k - $165k</span>
+                  <span class="meta-tag">On-site</span>
+                  <span class="meta-tag">Kubernetes / AWS</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Job Selection Screen &rarr; DISPLAY Available Jobs</code>
+            </div>
+          </div>
+        </section>
+
+      </div> <!-- /app-content -->
+
+      <!-- Job Details & Apply Modal -->
+      <div class="modal-overlay" id="jobDetailModal">
+        <div class="modal-sheet">
+          <div class="modal-handle"></div>
+          <div class="modal-header">
+            <span class="badge-pill" id="modalJobMatch">96% Match</span>
+            <button class="close-modal-btn" id="btnCloseJobModal">&times;</button>
+          </div>
+          <h3 id="modalJobTitle">Senior Frontend Engineer</h3>
+          <p class="modal-company" id="modalJobCompany">CloudScale Inc. • Remote</p>
+          <div class="job-salary-banner" id="modalJobSalary">$135,000 - $160,000 / yr</div>
+          <div class="modal-body" id="modalJobDesc">
+            Job description details...
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary" onclick="alert('Job added to your saved bookmarks!')">Bookmark</button>
+            <button class="btn btn-primary" id="btnSubmitApplication">
+              <span>🚀 1-Click AI Apply</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Notification -->
+      <div class="toast-notice" id="appToast">Notification message</div>
+    </div> <!-- /mobile-frame -->
+  </div> <!-- /mobile-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>
