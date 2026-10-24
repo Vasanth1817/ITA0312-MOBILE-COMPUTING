@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkEase — Smart Parking App</title>
+  <meta name="description" content="Smart Parking mobile app prototype featuring real-time empty parking counts, available free parking locations, and interactive slot booking confirmation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mobile-wrapper">
+    <div class="mobile-frame">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time" id="statusTime">09:41</span>
+        <div class="notch"></div>
+        <div class="status-icons">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M1 10h2v2H1zm4-3h2v5H5zm4-3h2v8H9zm4-4h2v12h-2z"/></svg>
+          <svg width="15" height="12" viewBox="0 0 15 12" fill="currentColor"><path d="M7.5 2.5C9.8 2.5 12 3.5 13.5 5.2L15 3.6C13.1 1.5 10.4.3 7.5.3 4.6.3 1.9 1.5 0 3.6l1.5 1.6C3 3.5 5.2 2.5 7.5 2.5zm0 4.6c1.3 0 2.5.6 3.4 1.6L12.3 7C11.1 5.6 9.4 4.7 7.5 4.7c-1.9 0-3.6.9-4.8 2.3l1.4 1.7c.9-1 2.1-1.6 3.4-1.6zm0 4.5c.9 0 1.6-.7 1.6-1.6 0-.9-.7-1.6-1.6-1.6-.9 0-1.6.7-1.6 1.6 0 .9.7 1.6 1.6 1.6z"/></svg>
+          <svg width="22" height="11" viewBox="0 0 22 11" fill="currentColor"><rect x="1" y="1" width="18" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2.5" y="2.5" width="13" height="6" rx="1"/><path d="M20 4v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <!-- App Viewport -->
+      <div class="app-content" id="appViewport">
+
+        <!-- ================= SCREEN 1: WELCOME SCREEN ================= -->
+        <section class="screen active" id="screenWelcome">
+          <div class="welcome-container">
+            <div class="welcome-hero-art">
+              <div class="radar-pulse"></div>
+              <div class="radar-pulse-outer"></div>
+              <div class="parking-icon-bubble">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+              </div>
+            </div>
+
+            <div class="welcome-copy">
+              <div class="live-pill">
+                <span class="live-blink"></span>
+                <span>Live IoT City Sensor Grid</span>
+              </div>
+              <h1 class="welcome-title">ParkEase</h1>
+              <p class="welcome-tagline">Smart Urban Parking & Space Reservation</p>
+              <p class="welcome-subtitle">Locate empty bays in real-time, view free slot availability, and reserve guaranteed parking with zero circling.</p>
+            </div>
+
+            <div class="welcome-actions">
+              <button class="btn btn-primary" id="btnGoToLogin">
+                <span>Login to ParkEase</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              </button>
+              <button class="btn btn-secondary" id="btnGoToRegister">
+                <span>Register (Vehicle Registration)</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Welcome Screen &rarr; Choose Login or Register</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 2: LOGIN SCREEN ================= -->
+        <section class="screen" id="screenLogin">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenWelcome" aria-label="Back to Welcome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Driver Login</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Welcome Driver</h3>
+              <p>Sign in with your email or vehicle plate to manage reservations.</p>
+            </div>
+
+            <form id="loginForm" class="auth-form" onsubmit="return false;">
+              <div class="input-group">
+                <label for="loginEmail">Email / Vehicle Plate</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <input type="text" id="loginEmail" placeholder="driver@smartpark.com" value="driver.alex@parkease.io" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="loginPassword" placeholder="••••••••" value="parkSmart2026" required>
+                </div>
+              </div>
+
+              <div class="form-row-space">
+                <label class="remember-label">
+                  <input type="checkbox" checked> <span>Remember vehicle</span>
+                </label>
+                <a href="#" class="inline-link" onclick="alert('Demo: Click Login to proceed to Home screen')">Forgot pin?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnLoginSubmit">
+                <span>Login &rarr; Home Screen</span>
+              </button>
+            </form>
+
+            <div class="auth-footer">
+              <p>New to ParkEase? <a href="#" id="linkLoginToRegister">Register vehicle</a></p>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>IF user selects "Login" &rarr; DISPLAY Login Screen &rarr; Home</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 3: REGISTER SCREEN ================= -->
+        <section class="screen" id="screenRegister">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenWelcome" aria-label="Back to Welcome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Vehicle Registration</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="auth-intro">
+              <h3>Register Your Car</h3>
+              <p>Link your license plate for automated barrier access.</p>
+            </div>
+
+            <form id="registerForm" class="auth-form" onsubmit="return false;">
+              <div class="input-group">
+                <label for="regDriverName">Driver Full Name</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <input type="text" id="regDriverName" placeholder="David Miller" value="David Miller" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regVehiclePlate">License Plate Number</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+                  <input type="text" id="regVehiclePlate" placeholder="KA-01-AB-1234" value="KA-05-MN-2026" required style="text-transform: uppercase;">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regVehicleType">Vehicle Category</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
+                  <input type="text" id="regVehicleType" value="Sedan (Electric EV)" required>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="regPassword">Security Password</label>
+                <div class="input-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <input type="password" id="regPassword" placeholder="Minimum 6 characters" value="passPark2026" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btnRegisterSubmit">
+                <span>Register &rarr; Home Screen</span>
+              </button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Already registered? <a href="#" id="linkRegisterToLogin">Login</a></p>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>ELSE IF user selects "Register" &rarr; DISPLAY Registration Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 4: HOME SCREEN ================= -->
+        <section class="screen" id="screenHome">
+          <div class="home-header">
+            <div class="user-profile-badge">
+              <div class="avatar-car">🚗</div>
+              <div>
+                <span class="greeting-subtitle">Active Driver</span>
+                <h3 class="user-greeting" id="homeDriverName">David Miller</h3>
+              </div>
+            </div>
+            <button class="icon-action-btn" id="btnHomeLogout" title="Logout">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="home-scroll-area">
+            <!-- Live Smart Parking Status Card -->
+            <div class="parking-hero-card">
+              <div class="hero-tag-row">
+                <span class="live-indicator"><span class="dot"></span> Smart Bay Radar</span>
+                <span class="vehicle-plate-pill" id="homePlatePill">KA-05-MN-2026</span>
+              </div>
+              <h4>Central City Smart Garage</h4>
+              <p class="garage-address">Downtown 4th Ave • IoT Sensor Node #88</p>
+
+              <div class="quick-capacity-bar">
+                <div class="capacity-labels">
+                  <span>Occupancy: 83%</span>
+                  <span>42 Bays Free</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 83%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- The 3 Core Navigation Modules specified in Pseudocode -->
+            <div class="section-block">
+              <div class="section-title-row">
+                <h4>Parking Operations</h4>
+                <span class="muted-note">Select an action</span>
+              </div>
+
+              <div class="flow-nav-cards">
+                <!-- 1. Empty Parking Count -->
+                <div class="flow-card flow-card-cyan" id="navToEmptyCount">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="20" x2="9" y2="10"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Empty Parking Count</h5>
+                    <p>Display real-time count of available slots & floor breakdown</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- 2. Free Parking Slots -->
+                <div class="flow-card flow-card-emerald" id="navToFreeSlots">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Free Parking Slots</h5>
+                    <p>Browse available parking locations and bay availability</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+
+                <!-- 3. Book Parking -->
+                <div class="flow-card flow-card-blue" id="navToBookParking">
+                  <div class="flow-card-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+                  </div>
+                  <div class="flow-card-content">
+                    <h5>Book Parking</h5>
+                    <p>Select parking slot & generate verified booking confirmation</p>
+                  </div>
+                  <div class="flow-card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Home Screen &rarr; Choose: Empty Parking Count | Free Parking Slots | Book Parking</code>
+            </div>
+          </div>
+
+          <!-- Bottom Tab Bar -->
+          <div class="bottom-tab-bar">
+            <button class="tab-item active" data-target="screenHome">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span>Home</span>
+            </button>
+            <button class="tab-item" data-target="screenEmptyCount">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Count</span>
+            </button>
+            <button class="tab-item" data-target="screenFreeSlots">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Locations</span>
+            </button>
+            <button class="tab-item" data-target="screenBookParking">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+              <span>Book Bay</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 5: EMPTY PARKING COUNT SCREEN ================= -->
+        <section class="screen" id="screenEmptyCount">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Empty Parking Count</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <!-- Big Counter Display specified in Pseudocode -->
+            <div class="count-big-display">
+              <span class="badge-pill">Live Sensor Tally</span>
+              <div class="mega-number-row">
+                <span class="count-number" id="liveAvailableCount">42</span>
+                <span class="count-label">Empty Slots<br><small>Available Now</small></span>
+              </div>
+              <p class="count-sub-info">Out of 250 Total Parking Bays • Updated 2s ago</p>
+            </div>
+
+            <!-- Breakdown Matrix -->
+            <div class="slot-summary-grid">
+              <div class="summary-cell green">
+                <strong>42</strong>
+                <span>Available</span>
+              </div>
+              <div class="summary-cell red">
+                <strong>208</strong>
+                <span>Occupied</span>
+              </div>
+              <div class="summary-cell cyan">
+                <strong>12</strong>
+                <span>EV Charging</span>
+              </div>
+            </div>
+
+            <!-- Floor by floor live availability -->
+            <div class="section-block">
+              <h4>Floor-Wise Empty Slot Distribution</h4>
+
+              <div class="floor-row">
+                <div class="floor-info">
+                  <strong>Level 1 — Ground Deck</strong>
+                  <span>6 Empty / 80 Total</span>
+                </div>
+                <div class="floor-bar"><div class="fill" style="width: 92%;"></div></div>
+                <span class="floor-badge low">Limited</span>
+              </div>
+
+              <div class="floor-row">
+                <div class="floor-info">
+                  <strong>Level 2 — Intermediate</strong>
+                  <span>14 Empty / 85 Total</span>
+                </div>
+                <div class="floor-bar"><div class="fill" style="width: 83%;"></div></div>
+                <span class="floor-badge moderate">Moderate</span>
+              </div>
+
+              <div class="floor-row">
+                <div class="floor-info">
+                  <strong>Level 3 — Upper Deck</strong>
+                  <span>22 Empty / 85 Total</span>
+                </div>
+                <div class="floor-bar"><div class="fill" style="width: 74%;"></div></div>
+                <span class="floor-badge good">Good</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btnCountProceedToBook">
+              <span>Proceed to Book an Empty Slot &rarr;</span>
+            </button>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Number of Available Parking Slots</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 6: FREE PARKING SLOTS SCREEN ================= -->
+        <section class="screen" id="screenFreeSlots">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Free Parking Slots</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="locations-intro">
+              <h4>Available Parking Locations & Slots</h4>
+              <p>Real-time slot count and pricing across city zones.</p>
+            </div>
+
+            <div class="location-cards-list">
+              <!-- Location 1 -->
+              <div class="location-card" onclick="selectLocationToBook('Downtown Central Garage', '42 Free Slots', '$3.50/hr')">
+                <div class="location-head">
+                  <div class="loc-badge-icon">📍</div>
+                  <div class="loc-head-info">
+                    <h5>Downtown Central Garage</h5>
+                    <span>4th Ave & Main Blvd • 0.4 km away</span>
+                  </div>
+                  <span class="free-badge">42 Slots Free</span>
+                </div>
+                <div class="location-meta-row">
+                  <span class="meta-item">⚡ 8 EV Chargers</span>
+                  <span class="meta-item">🛡️ 24/7 Security</span>
+                  <span class="meta-price">$3.50 / hr</span>
+                </div>
+              </div>
+
+              <!-- Location 2 -->
+              <div class="location-card" onclick="selectLocationToBook('Metro Tech Park Zone B', '28 Free Slots', '$2.75/hr')">
+                <div class="location-head">
+                  <div class="loc-badge-icon">🏢</div>
+                  <div class="loc-head-info">
+                    <h5>Metro Tech Park Zone B</h5>
+                    <span>Innovation Way • 1.2 km away</span>
+                  </div>
+                  <span class="free-badge">28 Slots Free</span>
+                </div>
+                <div class="location-meta-row">
+                  <span class="meta-item">⚡ 14 EV Superchargers</span>
+                  <span class="meta-item">☂️ Covered Deck</span>
+                  <span class="meta-price">$2.75 / hr</span>
+                </div>
+              </div>
+
+              <!-- Location 3 -->
+              <div class="location-card" onclick="selectLocationToBook('Grand Mall & Plaza Deck', '65 Free Slots', '$4.00/hr')">
+                <div class="location-head">
+                  <div class="loc-badge-icon">🛍️</div>
+                  <div class="loc-head-info">
+                    <h5>Grand Mall & Plaza Deck</h5>
+                    <span>Retail Boulevard • 2.1 km away</span>
+                  </div>
+                  <span class="free-badge">65 Slots Free</span>
+                </div>
+                <div class="location-meta-row">
+                  <span class="meta-item">♿ Accessible Bays</span>
+                  <span class="meta-item">🛒 Direct Mall Access</span>
+                  <span class="meta-price">$4.00 / hr</span>
+                </div>
+              </div>
+
+              <!-- Location 4 -->
+              <div class="location-card" onclick="selectLocationToBook('Airport Transit Express Lot', '120 Free Slots', '$5.00/hr')">
+                <div class="location-head">
+                  <div class="loc-badge-icon">✈️</div>
+                  <div class="loc-head-info">
+                    <h5>Airport Transit Express Lot</h5>
+                    <span>Terminal Ring Road • 4.5 km away</span>
+                  </div>
+                  <span class="free-badge">120 Slots Free</span>
+                </div>
+                <div class="location-meta-row">
+                  <span class="meta-item">🚌 Free Shuttle</span>
+                  <span class="meta-item">🔒 Fenced Long-Stay</span>
+                  <span class="meta-price">$5.00 / hr</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Available Parking Locations and Slots</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 7: BOOK PARKING / SLOT SELECTION SCREEN ================= -->
+        <section class="screen" id="screenBookParking">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Select Parking Slot</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="lot-header-bar">
+              <div>
+                <h4 id="bookingLotName">Downtown Central Garage</h4>
+                <p>Tap any green bay to select your spot</p>
+              </div>
+              <div class="lot-level-toggle">
+                <button class="lvl-btn active" data-level="L1">Level 1</button>
+                <button class="lvl-btn" data-level="L2">Level 2</button>
+              </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="lot-legend">
+              <div class="legend-item"><span class="legend-box available"></span> Free</div>
+              <div class="legend-item"><span class="legend-box occupied"></span> Occupied</div>
+              <div class="legend-item"><span class="legend-box ev"></span> EV Bay</div>
+              <div class="legend-item"><span class="legend-box selected"></span> Selected</div>
+            </div>
+
+            <!-- Parking Bays Grid -->
+            <div class="parking-grid-map" id="parkingGrid">
+              <!-- Row 1 -->
+              <div class="bay-slot occupied">A-01</div>
+              <div class="bay-slot occupied">A-02</div>
+              <div class="bay-slot available" data-slot="A-03" data-type="Standard">A-03</div>
+              <div class="bay-slot available" data-slot="A-04" data-type="EV Fast Charge">A-04 ⚡</div>
+              
+              <!-- Driveway lane -->
+              <div class="driveway-lane">
+                <span>&uarr; &nbsp; DRIVEWAY ENTRANCE &nbsp; &rarr;</span>
+              </div>
+
+              <!-- Row 2 -->
+              <div class="bay-slot occupied">B-01</div>
+              <div class="bay-slot available" data-slot="B-02" data-type="Standard">B-02</div>
+              <div class="bay-slot available selected" data-slot="B-03" data-type="EV Fast Charge">B-03 ⚡</div>
+              <div class="bay-slot occupied">B-04</div>
+
+              <!-- Row 3 -->
+              <div class="bay-slot available" data-slot="C-01" data-type="Accessible">C-01 ♿</div>
+              <div class="bay-slot occupied">C-02</div>
+              <div class="bay-slot available" data-slot="C-03" data-type="Standard">C-03</div>
+              <div class="bay-slot occupied">C-04</div>
+            </div>
+
+            <!-- Selected Slot Action Card -->
+            <div class="selected-slot-card">
+              <div class="slot-callout-row">
+                <div class="slot-badge-big" id="selectedSlotBadge">Slot B-03</div>
+                <div>
+                  <h5 id="selectedSlotType">EV Fast Charge Bay</h5>
+                  <p>Level 1 • 25m to Elevator</p>
+                </div>
+                <div class="slot-rate">$3.50/hr</div>
+              </div>
+
+              <div class="duration-selector">
+                <label>Duration:</label>
+                <div class="hour-pills">
+                  <button class="hour-btn">1 hr</button>
+                  <button class="hour-btn active">2 hrs</button>
+                  <button class="hour-btn">4 hrs</button>
+                  <button class="hour-btn">Full Day</button>
+                </div>
+              </div>
+
+              <!-- USER SELECTS A PARKING SLOT -> DISPLAY Booking Confirmation Screen -->
+              <button class="btn btn-primary btn-block" id="btnConfirmBookingAction">
+                <span>Confirm Reservation &rarr; Confirmation</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Parking Slot Selection Screen &rarr; USER SELECTS A PARKING SLOT &rarr; DISPLAY Booking Confirmation Screen</code>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SCREEN 8: BOOKING CONFIRMATION SCREEN ================= -->
+        <section class="screen" id="screenBookingConfirmation">
+          <div class="screen-header">
+            <button class="back-btn" data-target="screenHome" aria-label="Back to Home">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <h2>Booking Confirmed</h2>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-body">
+            <div class="confirm-ticket-card">
+              <div class="success-check-badge">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+
+              <h3>Parking Slot Reserved!</h3>
+              <p class="ticket-sub">Scan QR at the gate barrier to open entrance</p>
+
+              <!-- Simulated QR Code -->
+              <div class="qr-code-box">
+                <div class="qr-matrix">
+                  <div class="qr-corner tl"></div>
+                  <div class="qr-corner tr"></div>
+                  <div class="qr-corner bl"></div>
+                  <div class="qr-pattern-lines"></div>
+                </div>
+                <span class="qr-pass-code" id="ticketRefCode">#PRK-84920</span>
+              </div>
+
+              <!-- Confirmation Details Table -->
+              <div class="ticket-details-table">
+                <div class="ticket-row">
+                  <span>Reserved Slot</span>
+                  <strong id="confirmSlotCode">Slot B-03 (Level 1)</strong>
+                </div>
+                <div class="ticket-row">
+                  <span>Location</span>
+                  <strong>Downtown Central Garage</strong>
+                </div>
+                <div class="ticket-row">
+                  <span>Vehicle Plate</span>
+                  <strong id="confirmPlateCode">KA-05-MN-2026</strong>
+                </div>
+                <div class="ticket-row">
+                  <span>Duration</span>
+                  <strong>2 Hours (Valid until 11:41 AM)</strong>
+                </div>
+                <div class="ticket-row total">
+                  <span>Total Amount Paid</span>
+                  <strong>$7.00</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="confirm-actions">
+              <button class="btn btn-secondary btn-block" onclick="alert('GPS Navigation started: Follow Downtown 4th Ave')">
+                <span>🗺️ Navigate via GPS</span>
+              </button>
+              <button class="btn btn-primary btn-block" id="btnBackToHomeFromConfirm">
+                <span>Return to Home Screen</span>
+              </button>
+            </div>
+
+            <div class="pseudocode-indicator">
+              <code>DISPLAY Booking Confirmation Screen</code>
+            </div>
+          </div>
+        </section>
+
+      </div> <!-- /app-content -->
+
+      <!-- Toast Notification -->
+      <div class="toast-notice" id="appToast">Notification message</div>
+    </div> <!-- /mobile-frame -->
+  </div> <!-- /mobile-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>
