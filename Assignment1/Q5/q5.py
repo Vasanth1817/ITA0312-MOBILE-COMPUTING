@@ -9,7 +9,8 @@ load=[s*.025 for s in subs]
 sites=19; channels_per_site=171
 per_site=np.array(load)/sites
 blocking=[100*erlang_b(a,channels_per_site) for a in per_site]
-os.makedirs("Q5/outputs",exist_ok=True)
+os.makedirs("Assignment1/Q5/data",exist_ok=True)
+os.makedirs("Assignment1/Q5/figures",exist_ok=True)
 with open("Assignment1/Q5/data/scaling_data.csv","w",newline="") as f:
     w=csv.writer(f); w.writerow(["subscribers","offered_traffic_erlang","load_per_site_erlang","blocking_percent"])
     w.writerows(zip(subs,load,per_site,blocking))
