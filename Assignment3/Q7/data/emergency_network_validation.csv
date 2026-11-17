@@ -1,0 +1,9 @@
+metric,value,unit
+Mobile IP registration overhead per node,11,B/s
+gateway handoff interruption,230,ms
+intra-mesh route repair,100,ms
+handoff packet loss,0.9,%
+mesh delivery,95,%
+end_to_end_delivery,94,%
+AODV delivery at 80 nodes,99.9,%
+DSDV delivery at 80 nodes,81.3,%
