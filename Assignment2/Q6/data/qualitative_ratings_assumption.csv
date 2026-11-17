@@ -1,0 +1,6 @@
+technique,capacity,spectral_efficiency,fairness,complexity,cost
+FDMA,2,2,3,4,5
+TDMA,3,3,3,4,4
+CDMA,4,4,3,2,3
+OFDMA,5,5,4,3,2
+SDMA,4,4,3,2,2
