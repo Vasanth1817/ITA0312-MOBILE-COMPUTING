@@ -1,0 +1,5 @@
+metric,target,model_value,unit
+one_way_delay,150,82,ms
+ECG_delivery,99,99.47,%
+handoff_interruption,200,160,ms
+maximum_speed,30,30,m/s
