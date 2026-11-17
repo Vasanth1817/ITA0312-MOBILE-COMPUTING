@@ -1,0 +1,6 @@
+criterion,cellular_score,adhoc_score
+Infrastructure,5,1
+Infrastructure independence,1,5
+Multi-hop resilience,2,5
+Planned wide-area coverage,5,2
+Rapid disaster deployment,2,5
