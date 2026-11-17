@@ -3,7 +3,8 @@ import csv, os, matplotlib.pyplot as plt
 C0=19; rounds=range(0,6); n=4
 cells=[C0*4**k for k in rounds]
 power=[1/(2**(n*k)) for k in rounds]
-os.makedirs("Q6/outputs",exist_ok=True)
+os.makedirs("Assignment1/Q6/data",exist_ok=True)
+os.makedirs("Assignment1/Q6/figures",exist_ok=True)
 with open("Assignment1/Q6/data/recurrence_data.csv","w",newline="") as f:
     w=csv.writer(f); w.writerow(["round_k","cells_C0_times_4_power_k","relative_transmit_power_n4"])
     w.writerows(zip(rounds,cells,power))
