@@ -1,23 +1,24 @@
-# Mobile Computing — Assignment 1 (Tasks 1–7)
+# Mobile Computing — Assignment 1
 
-Based on the uploaded **CO1_Assignment.docx**. Each question folder contains a standalone Python program and an output chart (SVG). The relevant questions also include CSV datasets.
+Each question uses the same submission layout:
 
-## Run
-```bash
-pip install -r requirements.txt
-python Q1/main.py
+```text
+Qn/
+├── data/             # Input datasets and generated CSV files (when needed)
+├── figures/          # Output charts and figures
+├── Qn_Report.md      # Question report
+├── qn.py             # Python implementation
+└── requirements.txt # Dependencies
 ```
-Run any question independently from the `Assignment1` directory, for example `python Q5/main.py`.
 
-Each script writes its generated PNG chart and CSV results into that question's `outputs/` directory. The committed SVG is a viewable reference output.
+## Setup and execution
+Run commands from the repository root:
 
-## Questions
-1. Alternative frequency-planning strategies
-2. Governing design parameters
-3. Capacity and interference functions
-4. Best, average and worst-case behaviour
-5. Scaling and sensitivity analysis
-6. Recurrence for repeated cell splitting
-7. Closed-form recurrence solution and interpretation
+```bash
+pip install -r Assignment1/Q1/requirements.txt
+python Assignment1/Q1/q1.py
+```
 
-**Scenario constants from the DOCX:** 12 km² township, 336 duplex channels, 0.025 Erlang/subscriber, and target blocking probability of 2%.
+Replace Q1/q1.py with the relevant question folder and script for Q2–Q7. Generated charts and CSV outputs are saved in the matching question's `figures/` and `data/` directories.
+
+The report files provide a consistent structure for objective, methodology, program, output, and result/discussion. Verify question-specific calculations against the assignment document before submission.
