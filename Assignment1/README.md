@@ -19,6 +19,6 @@ pip install -r Assignment1/Q1/requirements.txt
 python Assignment1/Q1/q1.py
 ```
 
-Replace Q1/q1.py with the relevant question folder and script for Q2–Q7. Generated charts and CSV outputs are saved in the matching question's `figures/` and `data/` directories.
+Replace Q1/q1.py with the relevant question folder and script for Q2–Q12. Generated charts and CSV outputs are saved in the matching question's `figures/` and `data/` directories.
 
 The report files provide a consistent structure for objective, methodology, program, output, and result/discussion. Verify question-specific calculations against the assignment document before submission.
