@@ -5,7 +5,8 @@ rows=[]
 for target in targets:
     k=math.ceil(math.log(target/C0,4)) if target>C0 else 0
     rows.append((target,k,C0*4**k,4**k,1/(16**k)))
-os.makedirs("Q7/outputs",exist_ok=True)
+os.makedirs("Assignment1/Q7/data",exist_ok=True)
+os.makedirs("Assignment1/Q7/figures",exist_ok=True)
 with open("Assignment1/Q7/data/splitting_rounds.csv","w",newline="") as f:
     w=csv.writer(f); w.writerow(["target_sites","minimum_rounds","achieved_sites","relative_site_cost","relative_power_n4"]); w.writerows(rows)
 ks=range(0,5); cost=[4**k for k in ks]; power=[16**(-k) for k in ks]
