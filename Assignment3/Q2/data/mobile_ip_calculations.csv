@@ -1,0 +1,8 @@
+metric,value,unit
+registration_rtt,89,ms
+ipip_header,20,bytes
+overhead_1000B_payload,2,%
+overhead_200B_payload,10,%
+triangular_route_delay,82,ms
+direct_route_delay,40,ms
+packets_affected_at_50pps,8,packets
