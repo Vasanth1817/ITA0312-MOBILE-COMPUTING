@@ -6,7 +6,8 @@ R = 0.5
 n_values = [2.5,3.0,4.0]
 area = (3*np.sqrt(3)/2)*R**2
 q = np.sqrt(3*N)
-os.makedirs("Q3/outputs",exist_ok=True)
+os.makedirs("Assignment1/Q3/data",exist_ok=True)
+os.makedirs("Assignment1/Q3/figures",exist_ok=True)
 with open("Assignment1/Q3/data/reuse_data.csv","w",newline="") as f:
     w=csv.writer(f); w.writerow(["cluster_N","reuse_ratio_Q","SIR_omni_n2_5_dB","SIR_omni_n3_dB","SIR_omni_n4_dB"])
     for i,qi in zip(N,q):
