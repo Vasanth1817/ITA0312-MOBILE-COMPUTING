@@ -1,0 +1,5 @@
+traffic_condition,fdma_utilisation_pct,fdma_blocking_pct,tdma_utilisation_pct,tdma_blocking_pct
+Continuous Voice,88.5,2.1,85.0,3.2
+Bursty Data 10 percent duty,14.2,0.0,78.4,1.1
+70-30 Voice-Data Mix,65.0,4.5,82.1,2.0
+Synchronized Bursts,42.0,18.5,91.2,6.4
