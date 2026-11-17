@@ -1,0 +1,4 @@
+scheme,sum_throughput_mbps,jain_fairness,data_status
+Round-robin,34.2,0.98,reported range endpoint
+Proportional-fair,62.0,0.88,illustrative midpoint only
+Channel-aware best-subcarrier,89.4,0.64,reported range endpoint
