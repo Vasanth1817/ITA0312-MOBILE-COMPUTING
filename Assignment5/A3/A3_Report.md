@@ -8,3 +8,8 @@
 |Undo|Stop listener|Rollback partial upload|Cancel/dedupe notification|
 
 Generic pattern: select ready item; observe platform; check constraints; cancel with compensation or defer/backoff and persist; mark running; idempotently execute; commit ACK and cleanup on success; compensate and retry/fail otherwise. Undo must release leases, securely remove temporary plaintext, abort/resume partial transfer, dedupe notification and clean revoked user data.
+
+
+## Output Visualization
+
+![Simulation output](figures/output.svg)
