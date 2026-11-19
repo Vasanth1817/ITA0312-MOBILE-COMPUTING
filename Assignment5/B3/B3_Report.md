@@ -11,3 +11,8 @@ Run `python b3.py` to generate the 20-row results CSV. The cost function is synt
 
 ## Trade-off
 Exact search is suitable for offline tuning and small regression instances. Adaptive selection is suitable for quick runtime response when bounded complexity and low overhead matter.
+
+
+## Output Visualization
+
+![Simulation output](figures/output.svg)
