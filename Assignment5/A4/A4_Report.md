@@ -9,3 +9,8 @@
 |Offline maps|Cache and render locally|Golden images, tile boundary, frame-time|Local bounded area; hybrid scale|
 
 Define mobile performance by operation, workload/device, resource budget, percentile and target. Dimensions include latency, throughput, tail behaviour, energy, memory and correctness/security. Offloading moves bottlenecks and trust boundaries.
+
+
+## Output Visualization
+
+![Simulation output](figures/output.svg)
