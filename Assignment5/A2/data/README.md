@@ -1,0 +1,1 @@
+No external data required; traces and tables are described in the report.
