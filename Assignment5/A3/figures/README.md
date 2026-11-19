@@ -1,0 +1,1 @@
+No generated chart required for the pseudocode-only section.
