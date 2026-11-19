@@ -13,3 +13,8 @@ Choose 360p when battery is low or network is slow; 720p on intermediate devices
 
 ## Limitations and production decision
 These are illustrative estimates, not codec measurements. Exact search is useful for offline tuning/device certification; adaptive policy is useful for runtime decisions. Production should measure upload latency, energy, encode success, thermal throttling, dropped frames, retries and user-visible quality, and provide fallback settings.
+
+
+## Output Visualization
+
+![Simulation output](figures/output.svg)
