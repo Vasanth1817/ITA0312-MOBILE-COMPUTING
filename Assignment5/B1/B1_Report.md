@@ -15,3 +15,8 @@ Five queued records. Good environment permits work. Harsh environment includes l
 |Harsh|Priority|5|7|1|4|
 
 Run `python b1.py`; CSV output is generated. These values are illustrative scenario results, not physical device measurements.
+
+
+## Output Visualization
+
+![Simulation output](figures/output.svg)
