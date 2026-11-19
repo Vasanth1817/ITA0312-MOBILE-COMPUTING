@@ -11,3 +11,8 @@ Pseudocode: select dirty/queued ordered criticality/deadline/size. Skip remote A
 |R5|5|600 KB|Yes/No|Wi-Fi 80%|Encrypt or quarantine|
 
 Offline-first retains local progress using operation logs, causal/version metadata and conflict policy; offline is a defer for sync, not a block on local writes.
+
+
+## Output Visualization
+
+![Simulation output](figures/output.svg)
