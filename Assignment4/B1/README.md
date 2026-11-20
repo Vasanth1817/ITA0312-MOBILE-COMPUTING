@@ -1,10 +1,3 @@
-# Assignment 4 — B1: Android vs iOS Model Validation
+# Assignment 4B — Task 1: OS model validation (8 marks)
 
-Analyse and validate the mobile OS model using the assignment's comparison and validation criteria.
-
-## Source and scope
-This task folder is organized according to Assignment 4 CO4. Detailed solution content and implementation/capture material are to be drawn from the supplied assignment document.
-
-## Output / evidence
-- Add verified code output, diagrams, or device captures relevant to this task.
-- Clearly label simulated or illustrative evidence; do not claim device measurements without a real device run.
+Validate resource-management and lifecycle assumptions for Android vs iOS. Compare observable OS mechanisms, process/background limits, memory/resource controls, and application behaviour. Use the provided model/tests and capture fields for device-dependent results; do not substitute predictions for measurements.
