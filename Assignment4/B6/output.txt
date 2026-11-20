@@ -1,0 +1,6 @@
+step 1: battery=90% thermal=0 moving=1 net=wifi interval=10s upload=yes
+step 2: battery=65% thermal=0 moving=1 net=metered interval=10s upload=deferred
+step 3: battery=28% thermal=0 moving=0 net=wifi interval=60s upload=yes
+step 4: battery=12% thermal=2 moving=1 net=wifi interval=120s upload=deferred
+step 5: battery=50% thermal=0 moving=1 net=offline interval=10s upload=deferred
+records queued/created=5, uploaded=2, deferred=3
