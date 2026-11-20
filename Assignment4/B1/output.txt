@@ -1,0 +1,7 @@
+Scenario | Android model | iOS model
+foreground | active | active
+background | restricted/conditional | suspended/limited
+memory pressure | may be reclaimed | may be reclaimed
+scheduled task | restricted/conditional | suspended/limited
+
+Model assumptions only; validate on target devices with lifecycle logs.
