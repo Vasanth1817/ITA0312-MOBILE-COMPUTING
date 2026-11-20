@@ -18,3 +18,8 @@ Security: UID/SELinux/seccomp, PackageManager/AppOps, Keystore/TEE and verified 
 
 ## 1.3 Defence
 The specification assigns responsibilities, interfaces and dependencies; security and power mechanisms have identifiable enforcement points rather than vague claims.
+
+
+## Visual evidence
+
+![Task diagram](./output.svg)
