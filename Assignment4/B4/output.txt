@@ -1,0 +1,7 @@
+Checklist audit sample (not a scan of a real application):
+Hard-coded secrets | Critical | Move secrets out of source; rotate exposed credentials
+Unencrypted local data | High | Use encrypted storage and minimize retention
+Weak transport | High | Require TLS and validate endpoints
+Excessive permissions | Medium | Remove unused permissions; explain required access
+Exported components | High | Restrict component exposure and validate intents
+Logging sensitive data | High | Redact sensitive fields and audit logs
