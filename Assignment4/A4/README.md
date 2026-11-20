@@ -1,10 +1,19 @@
-# Assignment 4 — A4: Security Forensics — SecureNotes
+# Assignment 4A — Task 4: SecureNotes security forensics (7 marks)
 
-Defect analysis, attack scenario, security-design repairs, and regression check.
+## Four defects
+1. Requests all permissions in advance, violating least privilege.
+2. Token stored in cross-app-readable storage.
+3. Updates accepted without publisher verification.
+4. Cleartext network communication.
 
-## Source and scope
-This task folder is organized according to Assignment 4 CO4. Detailed solution content and implementation/capture material are to be drawn from the supplied assignment document.
+## Attack scenario
+Rogue airport Wi-Fi reads login/token over HTTP; attacker supplies fake update metadata and malicious package; app code runs with excessive permissions and can access/exfiltrate data. Separate malicious app may read exposed token file.
 
-## Output / evidence
-- Add verified code output, diagrams, or device captures relevant to this task.
-- Clearly label simulated or illustrative evidence; do not claim device measurements without a real device run.
+## Repairs
+- Declare only needed permissions; request contacts at feature-use time.
+- Store token in private app storage, encrypted AES-GCM using non-exportable Keystore key.
+- Install updates via platform installer and same-signature checks; verify any downloaded content.
+- HTTPS/TLS, cleartext disabled in Network Security Config, certificate pinning for API.
+
+## Regression
+Share-contact workflow remains after user consent; token decrypts on restart using Keystore; sync succeeds with trusted server; signed updates accepted and repackaged APKs rejected.
