@@ -18,4 +18,4 @@ Mobile Computing: Mobile operating systems, architecture, runtime, security and 
 - [B5 — Power Engineers](./B5/README.md)
 - [B6 — Secure Field-Tracking Prototype](./B6/README.md)
 
-Reports and outputs are organized by task. Any illustrative simulation/model outputs are labelled as such; device-dependent captures should be added from actual device runs.
+Each task folder includes its README and output diagram. Part B folders also include runnable Python demonstrations, saved sample outputs and run instructions. Illustrative model outputs are labelled as such; actual device measurements and screenshots should be added only after real device testing.
