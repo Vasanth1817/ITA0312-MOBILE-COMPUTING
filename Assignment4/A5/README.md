@@ -7,3 +7,8 @@ Transitions: ACTIVE→IDLE on timeout/power-key; IDLE→SUSPENDED when no wakelo
 Urgent push while suspended: OS-owned push connection as wake source, short callback allowance, WorkManager/JobScheduler constraints, hardware sensor batching/FIFO, wakelocks only around bounded work. Avoid permanent wakelocks, polling, persistent app sockets and repeating exact alarms.
 
 At 15% saver: lower sampling interval, defer sync to Wi-Fi/charging, restrict background tasks, throttle location and nonessential animation; trade timely data for device longevity.
+
+
+## Visual evidence
+
+![Task diagram](./output.svg)
