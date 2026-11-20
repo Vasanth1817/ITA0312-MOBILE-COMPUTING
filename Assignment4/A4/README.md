@@ -14,3 +14,8 @@ Rogue Wi-Fi reads login/token over HTTP; attacker supplies fake update metadata/
 
 ## Regression
 Share-contact workflow remains after consent; token decrypts on restart using Keystore; sync succeeds with trusted server; signed updates accepted and repackaged APKs rejected.
+
+
+## Visual evidence
+
+![Task diagram](./output.svg)
