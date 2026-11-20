@@ -1,10 +1,12 @@
-# Assignment 4 — A5: Power Management Reasoning
+# Assignment 4A — Task 5: Power management reasoning (7 marks)
 
-Power-state policy, urgent-push handling while suspended, and battery-saver assumptions.
+## States
+ACTIVE: screen on, interactive CPU/GPU work. IDLE: screen off, CPUs awake at lower operating points for pending work/wakelocks. SUSPENDED: CPUs off, DRAM self-refresh, wake sources armed.
 
-## Source and scope
-This task folder is organized according to Assignment 4 CO4. Detailed solution content and implementation/capture material are to be drawn from the supplied assignment document.
+Transitions: ACTIVE→IDLE on timeout/power-key; IDLE→SUSPENDED when no wakelock/work/timer; SUSPENDED→IDLE on wake IRQ; IDLE→ACTIVE on user input/call. A persistent partial wakelock prevents suspend.
 
-## Output / evidence
-- Add verified code output, diagrams, or device captures relevant to this task.
-- Clearly label simulated or illustrative evidence; do not claim device measurements without a real device run.
+## Urgent push while suspended
+Use OS-owned push connection as wake source, short callback allowance, WorkManager/JobScheduler constraints, hardware sensor batching/FIFO, wakelocks only around bounded work. Avoid permanent wakelocks, polling, app-owned persistent sockets and repeating exact alarms.
+
+## Saver at 15%
+Lower sampling interval, defer sync to Wi-Fi/charging, restrict background tasks, throttle location and nonessential animation; trade timely data for device longevity.
