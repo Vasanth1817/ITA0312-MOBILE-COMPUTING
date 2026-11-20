@@ -1,10 +1,3 @@
-# Assignment 4 — B3: Runtime Behaviour
+# Assignment 4B — Task 3: Runtime behaviour (10 marks)
 
-Runtime behaviour under changing execution conditions and performance/runtime analysis.
-
-## Source and scope
-This task folder is organized according to Assignment 4 CO4. Detailed solution content and implementation/capture material are to be drawn from the supplied assignment document.
-
-## Output / evidence
-- Add verified code output, diagrams, or device captures relevant to this task.
-- Clearly label simulated or illustrative evidence; do not claim device measurements without a real device run.
+Analyse interpreter/JIT/AOT and memory-management behaviour under changing execution conditions, compare platform/runtime strategies and performance costs, and validate with instrumented evidence where available. Include cold/warm execution and resource trade-offs; clearly label simulated or model values.
