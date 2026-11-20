@@ -1,0 +1,7 @@
+Probe plan:
+launch path: cold start, warm start
+memory: low-memory trim, allocation pressure
+background: defer, resume
+permission: granted, revoked
+
+Record timestamps, state, result and resource use for each. This is a test plan, not captured telemetry.
