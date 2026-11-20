@@ -1,10 +1,3 @@
-# Assignment 4 — B2: Build, Instrument, Test and Break
+# Assignment 4B — Task 2: Architecture assumptions vs measured reality (9 marks)
 
-Architecture assumptions vs measured reality: implementation/instrumentation, tests, failures and analysis.
-
-## Source and scope
-This task folder is organized according to Assignment 4 CO4. Detailed solution content and implementation/capture material are to be drawn from the supplied assignment document.
-
-## Output / evidence
-- Add verified code output, diagrams, or device captures relevant to this task.
-- Clearly label simulated or illustrative evidence; do not claim device measurements without a real device run.
+Task investigates threading/concurrency assumptions using build, instrument, test, break and debug workflow. Run the provided experiment on the intended environment, record observed timings and scheduler/thread evidence, compare against predicted behavior, and explain deviations. Device-dependent captures must be supplied from actual runs.
