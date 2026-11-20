@@ -1,10 +1,3 @@
-# Assignment 4 — B5: Power Engineers
+# Assignment 4B — Task 5: Three power engineers, one device (7 marks)
 
-Compare DVFS, Doze/background limits and wakelock discipline/batching for power optimisation.
-
-## Source and scope
-This task folder is organized according to Assignment 4 CO4. Detailed solution content and implementation/capture material are to be drawn from the supplied assignment document.
-
-## Output / evidence
-- Add verified code output, diagrams, or device captures relevant to this task.
-- Clearly label simulated or illustrative evidence; do not claim device measurements without a real device run.
+Compare three approaches: DVFS/big.LITTLE and CPU-frequency control; Doze/App Standby/background execution limits; and application wakelock discipline, sensor batching and upload coalescing. Explain trigger, state information, effects, trade-offs and measurements/model outputs. Source values are model estimates, not real battery readings.
