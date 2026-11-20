@@ -1,0 +1,10 @@
+01. process created
+02. application initialized
+03. activity onCreate
+04. activity onStart
+05. activity onResume
+06. activity onPause
+07. activity onStop
+08. process may be cached
+
+Illustrative lifecycle trace only.
