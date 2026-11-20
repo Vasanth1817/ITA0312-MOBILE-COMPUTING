@@ -1,0 +1,5 @@
+(80, False, 'wifi', 0) -> balanced sampling; opportunistic upload
+(25, False, 'metered', 0) -> low: batch upload; sparse sampling
+(12, False, 'wifi', 1) -> critical: sparse sampling; defer bulk upload
+(60, False, 'offline', 0) -> queue data; no upload
+(50, True, 'wifi', 0) -> normal sampling; upload when network permits
