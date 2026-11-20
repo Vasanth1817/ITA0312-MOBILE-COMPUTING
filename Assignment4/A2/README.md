@@ -15,3 +15,8 @@ Framework process-lifecycle/background-execution policies dominate delivery diff
 | Isolation | UID, SELinux, seccomp | sandbox, entitlements | AppContainer |
 
 Push trace: modem/network wakes OS; system push service receives message; OS grants bounded execution; app/extension decrypts using secure-store key and posts notification; callback ends and device returns idle. If process is killed, OS may recreate Android app; iOS alert still displays and extension may run. Windows 10 Mobile is discontinued; Windows column describes relevant UWP desktop/tablet architecture.
+
+
+## Visual evidence
+
+![Task diagram](./output.svg)
